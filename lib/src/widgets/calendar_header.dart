@@ -49,6 +49,11 @@ class CalendarHeader extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.max,
         children: [
+          Text(
+            'Selecione o dia',
+            style: headerStyle.titleTextStyle,
+          ),
+          Spacer(),
           if (headerStyle.leftChevronVisible)
             CustomIconButton(
               icon: headerStyle.leftChevronIcon,
@@ -56,7 +61,7 @@ class CalendarHeader extends StatelessWidget {
               margin: headerStyle.leftChevronMargin,
               padding: headerStyle.leftChevronPadding,
             ),
-          Expanded(
+          Container(
             child: headerTitleBuilder?.call(context, focusedMonth) ??
                 GestureDetector(
                   onTap: onHeaderTap,
