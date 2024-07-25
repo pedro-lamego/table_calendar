@@ -51,7 +51,7 @@ class CalendarHeader extends StatelessWidget {
         children: [
           Text(
             'Selecione o dia',
-            style: headerStyle.titleTextStyle,
+            style: headerStyle.titleTextStyle.copyWith(fontSize: 14),
           ),
           Spacer(),
           if (headerStyle.leftChevronVisible)
