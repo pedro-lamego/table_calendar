@@ -49,7 +49,7 @@ class CalendarHeader extends StatelessWidget {
         mainAxisSize: MainAxisSize.max,
         children: [
           Text(
-            'Selecione o dia1',
+            'Selecione o dia',
             style: headerStyle.titleTextStyle.copyWith(fontSize: 14),
           ),
           Spacer(),

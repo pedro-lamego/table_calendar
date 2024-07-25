@@ -38,7 +38,7 @@ class CalendarPage extends StatelessWidget {
     return Container(
       color: Color(0xF5F7FAFF),
       child: Padding(
-        padding: tablePadding ?? EdgeInsets.zero,
+        padding: EdgeInsets.zero,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
