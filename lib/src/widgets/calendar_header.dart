@@ -44,7 +44,6 @@ class CalendarHeader extends StatelessWidget {
 
     return Container(
       decoration: headerStyle.decoration,
-      margin: headerStyle.headerMargin,
       padding: headerStyle.headerPadding,
       child: Row(
         mainAxisSize: MainAxisSize.max,
