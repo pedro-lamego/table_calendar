@@ -35,22 +35,25 @@ class CalendarPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: tablePadding ?? EdgeInsets.zero,
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.stretch,
-        children: [
-          if (weekNumberVisible) _buildWeekNumbers(context),
-          Expanded(
-            child: Table(
-              border: tableBorder,
-              children: [
-                if (dowVisible) _buildDaysOfWeek(context),
-                ..._buildCalendarDays(context),
-              ],
+    return Container(
+      color: Color(0xF5F7FAFF),
+      child: Padding(
+        padding: tablePadding ?? EdgeInsets.zero,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            if (weekNumberVisible) _buildWeekNumbers(context),
+            Expanded(
+              child: Table(
+                border: tableBorder,
+                children: [
+                  if (dowVisible) _buildDaysOfWeek(context),
+                  ..._buildCalendarDays(context),
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
