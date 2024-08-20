@@ -86,7 +86,6 @@ class CalendarCore extends StatelessWidget {
           tablePadding: tablePadding,
           dowBuilder: (context, day) {
             return Container(
-              color: Color(0xF5F7FAFF),
               height: dowHeight,
               child: dowBuilder?.call(context, day),
             );

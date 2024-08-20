@@ -43,68 +43,71 @@ class CalendarHeader extends StatelessWidget {
     final text = headerStyle.titleTextFormatter?.call(focusedMonth, locale) ??
         DateFormat('MMMM yyyy', locale).format(focusedMonth);
 
-    return Container(
-      decoration: ShapeDecoration(
-        color: Color(0xFFF5F7FA),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8.0),
-        ),
-      ),
-      padding: EdgeInsets.all(6.0),
-      child: Row(
-        mainAxisSize: MainAxisSize.max,
-        children: [
-          if (headerStyle.leftChevronVisible)
-            CustomIconButton(
-              icon: headerStyle.leftChevronIcon,
-              onTap: onLeftChevronTap,
-              margin: headerStyle.leftChevronMargin,
-              padding: headerStyle.leftChevronPadding,
-            ),
-          Spacer(),
-          Container(
-            child: headerTitleBuilder?.call(context, focusedMonth) ??
-                GestureDetector(
-                  onTap: onHeaderTap,
-                  onLongPress: onHeaderLongPress,
-                  child: Text(
-                    text,
-                    style: GoogleFonts.inter(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w500,
-                      height: 1.43,
-                      letterSpacing: -0.6,
-                      color: Color(0xFF525866),
-                    ),
-                    textAlign: headerStyle.titleCentered
-                        ? TextAlign.center
-                        : TextAlign.start,
-                  ),
-                ),
+    return Padding(
+      padding: const EdgeInsets.all(20.0),
+      child: Container(
+        decoration: ShapeDecoration(
+          color: Color(0xFFF5F7FA),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8.0),
           ),
-          Spacer(),
-          if (headerStyle.formatButtonVisible &&
-              availableCalendarFormats.length > 1)
-            Padding(
-              padding: const EdgeInsets.only(left: 8.0),
-              child: FormatButton(
-                onTap: onFormatButtonTap,
-                availableCalendarFormats: availableCalendarFormats,
-                calendarFormat: calendarFormat,
-                decoration: headerStyle.formatButtonDecoration,
-                padding: headerStyle.formatButtonPadding,
-                textStyle: headerStyle.formatButtonTextStyle,
-                showsNextFormat: headerStyle.formatButtonShowsNext,
+        ),
+        padding: EdgeInsets.all(6.0),
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          children: [
+            if (headerStyle.leftChevronVisible)
+              CustomIconButton(
+                icon: headerStyle.leftChevronIcon,
+                onTap: onLeftChevronTap,
+                margin: headerStyle.leftChevronMargin,
+                padding: headerStyle.leftChevronPadding,
               ),
+            Spacer(),
+            Container(
+              child: headerTitleBuilder?.call(context, focusedMonth) ??
+                  GestureDetector(
+                    onTap: onHeaderTap,
+                    onLongPress: onHeaderLongPress,
+                    child: Text(
+                      text,
+                      style: GoogleFonts.inter(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w500,
+                        height: 1.43,
+                        letterSpacing: -0.6,
+                        color: Color(0xFF525866),
+                      ),
+                      textAlign: headerStyle.titleCentered
+                          ? TextAlign.center
+                          : TextAlign.start,
+                    ),
+                  ),
             ),
-          if (headerStyle.rightChevronVisible)
-            CustomIconButton(
-              icon: headerStyle.rightChevronIcon,
-              onTap: onRightChevronTap,
-              margin: headerStyle.rightChevronMargin,
-              padding: headerStyle.rightChevronPadding,
-            ),
-        ],
+            Spacer(),
+            if (headerStyle.formatButtonVisible &&
+                availableCalendarFormats.length > 1)
+              Padding(
+                padding: const EdgeInsets.only(left: 8.0),
+                child: FormatButton(
+                  onTap: onFormatButtonTap,
+                  availableCalendarFormats: availableCalendarFormats,
+                  calendarFormat: calendarFormat,
+                  decoration: headerStyle.formatButtonDecoration,
+                  padding: headerStyle.formatButtonPadding,
+                  textStyle: headerStyle.formatButtonTextStyle,
+                  showsNextFormat: headerStyle.formatButtonShowsNext,
+                ),
+              ),
+            if (headerStyle.rightChevronVisible)
+              CustomIconButton(
+                icon: headerStyle.rightChevronIcon,
+                onTap: onRightChevronTap,
+                margin: headerStyle.rightChevronMargin,
+                padding: headerStyle.rightChevronPadding,
+              ),
+          ],
+        ),
       ),
     );
   }
