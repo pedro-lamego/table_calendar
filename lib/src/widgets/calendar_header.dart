@@ -40,7 +40,7 @@ class CalendarHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final text = headerStyle.titleTextFormatter?.call(focusedMonth, locale) ??
-        DateFormat.yMMMM(locale).format(focusedMonth);
+        DateFormat('MMMMyyyy', locale).format(focusedMonth);
 
     return Container(
       decoration: headerStyle.decoration,
@@ -48,11 +48,6 @@ class CalendarHeader extends StatelessWidget {
       child: Row(
         mainAxisSize: MainAxisSize.max,
         children: [
-          Text(
-            'Selecione o dia',
-            style: headerStyle.titleTextStyle.copyWith(fontSize: 14),
-          ),
-          Spacer(),
           if (headerStyle.leftChevronVisible)
             CustomIconButton(
               icon: headerStyle.leftChevronIcon,

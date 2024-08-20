@@ -1,6 +1,7 @@
 // Copyright 2019 Aleksander Woźniak
 // SPDX-License-Identifier: Apache-2.0
 
+import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
 class CalendarPage extends StatelessWidget {
@@ -36,7 +37,7 @@ class CalendarPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(0xF5F7FAFF),
+      color: Colors.white,
       child: Padding(
         padding: EdgeInsets.zero,
         child: Row(
