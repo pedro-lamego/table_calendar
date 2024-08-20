@@ -2,6 +2,7 @@
 // SPDX-License-Identifier: Apache-2.0
 
 import 'package:flutter/widgets.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
 import '../customization/header_style.dart';
@@ -40,11 +41,16 @@ class CalendarHeader extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final text = headerStyle.titleTextFormatter?.call(focusedMonth, locale) ??
-        DateFormat('MMMMyyyy', locale).format(focusedMonth);
+        DateFormat('MMMM yyyy', locale).format(focusedMonth);
 
     return Container(
-      decoration: headerStyle.decoration,
-      padding: headerStyle.headerPadding,
+      decoration: ShapeDecoration(
+        color: Color(0xFFF5F7FA),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8.0),
+        ),
+      ),
+      padding: EdgeInsets.all(6.0),
       child: Row(
         mainAxisSize: MainAxisSize.max,
         children: [
@@ -55,6 +61,7 @@ class CalendarHeader extends StatelessWidget {
               margin: headerStyle.leftChevronMargin,
               padding: headerStyle.leftChevronPadding,
             ),
+          Spacer(),
           Container(
             child: headerTitleBuilder?.call(context, focusedMonth) ??
                 GestureDetector(
@@ -62,13 +69,20 @@ class CalendarHeader extends StatelessWidget {
                   onLongPress: onHeaderLongPress,
                   child: Text(
                     text,
-                    style: headerStyle.titleTextStyle,
+                    style: GoogleFonts.inter(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w500,
+                      height: 1.43,
+                      letterSpacing: -0.6,
+                      color: Color(0xFF525866),
+                    ),
                     textAlign: headerStyle.titleCentered
                         ? TextAlign.center
                         : TextAlign.start,
                   ),
                 ),
           ),
+          Spacer(),
           if (headerStyle.formatButtonVisible &&
               availableCalendarFormats.length > 1)
             Padding(
