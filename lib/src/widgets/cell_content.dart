@@ -67,7 +67,17 @@ class CellContent extends StatelessWidget {
     final alignment = calendarStyle.cellAlignment;
     final duration = const Duration(milliseconds: 250);
 
-    if (isDisabled) {
+    if (isToday && isTodayHighlighted) {
+      cell = calendarBuilders.todayBuilder?.call(context, day, focusedDay) ??
+          AnimatedContainer(
+            duration: duration,
+            margin: margin,
+            padding: padding,
+            decoration: calendarStyle.todayDecoration,
+            alignment: alignment,
+            child: Text(text, style: calendarStyle.todayTextStyle),
+          );
+    } else if (isDisabled) {
       cell = calendarBuilders.disabledBuilder?.call(context, day, focusedDay) ??
           AnimatedContainer(
             duration: duration,
@@ -107,16 +117,6 @@ class CellContent extends StatelessWidget {
             decoration: calendarStyle.rangeEndDecoration,
             alignment: alignment,
             child: Text(text, style: calendarStyle.rangeEndTextStyle),
-          );
-    } else if (isToday && isTodayHighlighted) {
-      cell = calendarBuilders.todayBuilder?.call(context, day, focusedDay) ??
-          AnimatedContainer(
-            duration: duration,
-            margin: margin,
-            padding: padding,
-            decoration: calendarStyle.todayDecoration,
-            alignment: alignment,
-            child: Text(text, style: calendarStyle.todayTextStyle),
           );
     } else if (isHoliday) {
       cell = calendarBuilders.holidayBuilder?.call(context, day, focusedDay) ??
